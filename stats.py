@@ -1,6 +1,6 @@
 def word_counter(str): 
     count = len(str.split())
-    print(f"{count} words found in the document")
+    return count
 
 def character_counter(str): 
     characters = {}
@@ -11,3 +11,15 @@ def character_counter(str):
         else: 
             characters[char] = 1
     return characters
+
+def sort_key(dict): 
+    return dict["count"]
+
+def sorted_output(counts):
+    sorted = []
+    for key in counts: 
+        if key.isalpha():
+            sorted.append({"key": key, "count": counts[key]})
+
+    sorted.sort(reverse=True, key=sort_key)
+    return sorted
