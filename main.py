@@ -1,4 +1,5 @@
 from stats import word_counter, character_counter, sorted_output
+from sys import argv, exit
 
 def get_book_text(filepath): 
     with open(filepath) as f: 
@@ -19,13 +20,13 @@ def formatted_output(word_count, sorted_counts, path):
 
     """
 def main(): 
-    path = "./books/frankenstein.txt"
+    if len(argv) != 2: 
+        print("Usage: python3 main.py <path_to_book>")
+        exit(1)
+    path = argv[1]
     text = get_book_text(path)
-    print(text)
     count = word_counter(text)
-    print(count)
     sorted = sorted_output(character_counter(text))
-    
     print(formatted_output(count, sorted, path))
 
 main()
